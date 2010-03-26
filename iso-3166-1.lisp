@@ -260,14 +260,17 @@
       (let ((key   (funcall key-key country))
             (value (funcall value-key country)))
         (dolist (key (if (consp key) key (list key)))
-            (setf (gethash key hash) value))))
+          (setf (gethash key hash)
+                (if (consp value)
+                    (car value)
+                    value)))))
     hash))
 
 (defvar *code-country* (extract-hashtable #'car #'cdr))
 (defvar *country-code* (extract-hashtable #'cdr #'car))
 
 (defun code-country (code)
-  (gethash code *code-country*))
+  (values (gethash code *code-country*)))
 
 (defun country-code (code)
-  (gethash code *country-code*))
+  (values (gethash code *country-code*)))
