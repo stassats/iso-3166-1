@@ -63,6 +63,7 @@
     ("csk" "Czechoslovakia")
     ("csm" "Serbia and Montenegro")
     ("cze" "Czech Republic")
+    ("ddr" "East Germany")
     ("dnk" "Denmark")
     ("dji" "Djibouti")
     ("dma" "Dominica")
@@ -254,7 +255,7 @@
     ("zmb" "Zambia")
     ("zwe" "Zimbabwe")))
 
-(defun extract-hashtable (key-key value-key )
+(defun extract-hashtable (key-key value-key)
   (let ((hash (make-hash-table :test #'equalp)))
     (dolist (country *countries*)
       (let ((key   (funcall key-key country))
